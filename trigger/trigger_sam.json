@@ -1,0 +1,25 @@
+{
+	"name": "trigger_sam",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline_till_switch",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 15,
+				"startTime": "2026-06-20T07:00:00",
+				"endTime": "2026-06-21T06:33:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

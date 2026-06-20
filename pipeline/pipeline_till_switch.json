@@ -81,20 +81,14 @@
 				}
 			}
 		],
-		"parameters": {
-			"arr_values": {
-				"type": "array",
-				"defaultValue": "4,5,6,7"
-			}
-		},
 		"variables": {
 			"value_arr": {
 				"type": "Array",
 				"defaultValue": [
-					"8",
-					"9",
-					"6",
-					"7"
+					8,
+					9,
+					6,
+					7
 				]
 			},
 			"len_arr": {

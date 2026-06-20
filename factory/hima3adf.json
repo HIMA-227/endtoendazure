@@ -1,0 +1,15 @@
+{
+	"name": "hima3adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "22496649-eb9b-4e20-932b-7342b9d7ce20",
+		"tenantId": "a20e0d64-350f-4596-aa53-662e3cedf1bd"
+	}
+}

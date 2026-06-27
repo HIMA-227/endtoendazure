@@ -23,6 +23,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"FileName": {
 				"type": "String"

@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://himaprojectkeyvault.vault.azure.net/"
 		},
+		"Azure_newlinked_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0616-065618-1gi04k9v"
+		},
 		"project2_event_trigger_properties_pipeline_project2_parameters_FileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().FileName"
@@ -62,6 +66,9 @@
 					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"Azure_newlinked_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('Azure_newlinked_properties_typeProperties_existingClusterId')]"
 					},
 					"project2_event_trigger_properties_pipeline_project2_parameters_FileName": {
 						"value": "[parameters('project2_event_trigger_properties_pipeline_project2_parameters_FileName')]"

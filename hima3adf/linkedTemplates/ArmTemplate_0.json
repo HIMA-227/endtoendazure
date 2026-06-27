@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://himaprojectkeyvault.vault.azure.net/"
 		},
+		"Azure_newlinked_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0616-065618-1gi04k9v"
+		},
 		"project2_event_trigger_properties_pipeline_project2_parameters_FileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().FileName"
@@ -169,7 +173,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricks1')]",
+			"name": "[concat(parameters('factoryName'), '/Azure_newlinked')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -185,14 +189,7 @@
 						},
 						"secretName": "databricks-access-token-project2"
 					},
-					"newClusterNodeType": "Standard_DS3_v2",
-					"newClusterNumOfWorker": "1",
-					"newClusterSparkEnvVars": {
-						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
-					},
-					"newClusterVersion": "14.3.x-scala2.12",
-					"clusterOption": "Fixed",
-					"newClusterInitScripts": []
+					"existingClusterId": "[parameters('Azure_newlinked_properties_typeProperties_existingClusterId')]"
 				}
 			},
 			"dependsOn": [
@@ -228,34 +225,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline_till_switch')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Azure_newlinked')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-7405611548127513.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "AzureKeyVault1",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "databricks-access-token-project2"
-					},
-					"newClusterNodeType": "Standard_DS4_v2",
-					"newClusterNumOfWorker": "1",
-					"newClusterVersion": "14.3.x-photon-scala2.12",
-					"clusterOption": "Fixed",
-					"newClusterInitScripts": []
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
 			]
 		},
 		{

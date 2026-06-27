@@ -7,6 +7,26 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "hima3adf"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://project2apmorgan.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://himaprojectkeyvault.vault.azure.net/"
+		},
+		"project_storage_event_properties_pipeline_project2_parameters_FileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().FileName"
+		},
+		"project_storage_event_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/29d9abcf-0051-49cf-819e-00e30ef6adfe/resourceGroups/hima_pract_res/providers/Microsoft.Storage/storageAccounts/project2apmorgan"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -33,6 +53,21 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"project_storage_event_properties_pipeline_project2_parameters_FileName": {
+						"value": "[parameters('project_storage_event_properties_pipeline_project2_parameters_FileName')]"
+					},
+					"project_storage_event_properties_typeProperties_scope": {
+						"value": "[parameters('project_storage_event_properties_typeProperties_scope')]"
 					}
 				}
 			},

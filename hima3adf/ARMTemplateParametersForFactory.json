@@ -4,6 +4,21 @@
 	"parameters": {
 		"factoryName": {
 			"value": "hima3adf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://project2apmorgan.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://himaprojectkeyvault.vault.azure.net/"
+		},
+		"project_storage_event_properties_pipeline_project2_parameters_FileName": {
+			"value": "@triggerBody().FileName"
+		},
+		"project_storage_event_properties_typeProperties_scope": {
+			"value": "/subscriptions/29d9abcf-0051-49cf-819e-00e30ef6adfe/resourceGroups/hima_pract_res/providers/Microsoft.Storage/storageAccounts/project2apmorgan"
 		}
 	}
 }

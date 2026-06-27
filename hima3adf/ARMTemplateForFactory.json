@@ -60,7 +60,7 @@
 							}
 						},
 						"linkedServiceName": {
-							"referenceName": "AzureDatabricks1",
+							"referenceName": "Azure_newlinked",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -81,7 +81,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks1')]"
+				"[concat(variables('factoryId'), '/linkedServices/Azure_newlinked')]"
 			]
 		},
 		{
@@ -252,6 +252,39 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/project2_event_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline_project2",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"FileName": "[parameters('project2_event_trigger_properties_pipeline_project2_parameters_FileName')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/morgannputdata/blobs/Landing_project2/",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('project2_event_trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline_project2')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/trigger_sam')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -283,36 +316,31 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/project2_event_trigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
+			"name": "[concat(parameters('factoryName'), '/Azure_newlinked')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline_project2",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"FileName": "[parameters('project2_event_trigger_properties_pipeline_project2_parameters_FileName')]"
-						}
-					}
-				],
-				"type": "BlobEventsTrigger",
+				"type": "AzureDatabricks",
 				"typeProperties": {
-					"blobPathBeginsWith": "/morgannputdata/blobs/Landing_project2/",
-					"blobPathEndsWith": ".csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('project2_event_trigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
+					"domain": "https://adb-7405611548127513.13.azuredatabricks.net",
+					"accessToken": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "databricks-access-token-project2"
+					},
+					"newClusterNodeType": "Standard_DS4_v2",
+					"newClusterNumOfWorker": "1",
+					"newClusterVersion": "14.3.x-photon-scala2.12",
+					"clusterOption": "Fixed",
+					"newClusterInitScripts": []
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline_project2')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
 			]
 		}
 	]

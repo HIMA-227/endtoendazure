@@ -14,6 +14,12 @@
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://himaprojectkeyvault.vault.azure.net/"
 		},
+		"project2_event_trigger_properties_pipeline_project2_parameters_FileName": {
+			"value": "@triggerBody().FileName"
+		},
+		"project2_event_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/29d9abcf-0051-49cf-819e-00e30ef6adfe/resourceGroups/hima_pract_res/providers/Microsoft.Storage/storageAccounts/project2apmorgan"
+		},
 		"containerUri": {
 			"value": ""
 		},
